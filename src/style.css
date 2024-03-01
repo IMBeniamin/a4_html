@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.infinipage,
+.infinipage > .card {
+  border-style: dashed;
+  border-color: rgba(0, 0, 0, 0.3);
+}
+.infinipage {
+  border-width: 2px 0 0 2px;
+}
+.infinipage > .card {
+  border-width: 0 2px 2px 0;
+}
+
+@layer components {
+  .card:has(input:checked) {
+    @apply bg-green-200;
+  }
+}
+
+@media print {
+  html,
+  body {
+    visibility: hidden;
+  }
+  .infinipage {
+    width: 210mm;
+    /* height: 297mm; */
+
+    /* overflow: hidden; */
+    page-break-inside: auto;
+  }
+  .printable {
+    visibility: visible;
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+  @page {
+    margin: 0;
+  }
+}
