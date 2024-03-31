@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
 
-const props = defineProps(['title', 'count'])
+const props = defineProps({
+  'title': String,
+  'count': Number
+})
 const emit = defineEmits(["edit-count"]);
 const title = ref(props.title)
 const count = ref(props.count)
@@ -27,7 +30,7 @@ watch(count, () => emit('edit-count', { title: title.value, count: count.value }
                 flex flex-col align-middle
                 ">
       <p class="text-center">{{ title }}</p>
-      <input class="text-center bg-inherit" type="text" required v-model="count" />
+      <input class="text-center bg-inherit" type="number" required v-model="count" />
     </div>
   </div>
 </template>
