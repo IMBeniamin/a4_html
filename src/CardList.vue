@@ -10,6 +10,7 @@ const headers = {
 const fetchedLabels = await axios.get(`https://api.labeller.imben.co/${import.meta.env.VITE_TENANT}/`, {
   headers: headers,
 })
+console.log(`using ${import.meta.env.VITE_SECRET_KEY} as secret key`)
 if (import.meta.env.DEV)
   console.log("fetchedLabels", fetchedLabels)
 const url = new URL(window.location.toString())
