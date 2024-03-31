@@ -12,6 +12,10 @@ const fetchedLabels = await axios.get(`https://api.labeller.imben.co/${import.me
 })
 if (import.meta.env.DEV)
   console.log("fetchedLabels", fetchedLabels)
+const url = new URL(window.location.toString())
+const tenantKey = url.pathname.split('/')[1]
+console.log(tenantKey)
+
 const parsedLabels: {title: string, count: number}[] = JSON.parse(fetchedLabels.data)
 const labels = ref(parsedLabels)
 const updateStorage = (title: string, count: number) => {
