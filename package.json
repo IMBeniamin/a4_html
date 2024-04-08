@@ -1,5 +1,5 @@
 {
-  "name": "a4_html",
+  "name": "labeller",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -21,6 +21,5 @@
     "typescript": "^5.2.2",
     "vite": "^5.1.4",
     "vue-tsc": "^1.8.27"
-  },
-  "packageManager": "yarn@4.1.1"
+  }
 }
