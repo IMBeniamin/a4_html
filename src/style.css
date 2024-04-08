@@ -2,11 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-  .card:has(input:checked) {
-    @apply bg-green-200;
-  }
-}
+
 
 @media print {
   html,

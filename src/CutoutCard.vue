@@ -36,6 +36,12 @@ watch(count, () => emit('edit-count', { title: title.value, count: count.value }
 </template>
 
 <style scoped>
+@layer components {
+  .card:has(input:checked) {
+    @apply bg-green-200;
+  }
+}
+
 @media print {
   .printable {
     visibility: visible;
