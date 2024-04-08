@@ -51,7 +51,7 @@ const bulkUpdateStorage = (newData: { title: string, count: number }[]) => {
 </script>
 
 <template>
-  <div class="infinipage flex flex-row flex-wrap">
+  <div class="infinipage flex flex-row flex-wrap bg-white dark:bg-slate-800">
     <template v-for="label in labels">
       <CutoutCard
           @edit-count="updateStorage($event.title, $event.count)"

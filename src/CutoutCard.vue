@@ -36,6 +36,7 @@ watch(count, () => emit('edit-count', { title: title.value, count: count.value }
 </template>
 
 <style scoped>
+@tailwind components;
 @layer components {
   .card:has(input:checked) {
     @apply bg-green-200;
