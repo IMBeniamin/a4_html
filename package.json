@@ -1,7 +1,7 @@
 {
   "name": "labeller",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,8 +11,7 @@
   "dependencies": {
     "axios": "^1.6.7",
     "primevue": "^3.51.0",
-    "vue": "^3.4.19",
-    "vue-tsc": "^2.0.11"
+    "vue": "^3.4.19"
   },
   "devDependencies": {
     "@types/node": "^20.11.27",
@@ -21,7 +20,8 @@
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.2.2",
-    "vite": "^5.1.4"
+    "vite": "^5.1.4",
+    "vue-tsc": "^2.0.11"
   },
   "packageManager": "yarn@4.1.1"
 }
