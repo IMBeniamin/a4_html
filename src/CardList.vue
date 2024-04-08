@@ -64,4 +64,26 @@ const bulkUpdateStorage = (newData: { title: string, count: number }[]) => {
 
 <style scoped>
 
+.infinipage,
+.infinipage > .card {
+  border-style: dashed;
+  border-color: rgba(0, 0, 0, 0.3);
+}
+.infinipage {
+  border-width: 2px 0 0 2px;
+}
+.infinipage > .card {
+  border-width: 0 2px 2px 0;
+}
+
+@media print {
+  .infinipage {
+    width: 210mm;
+    /* height: 297mm; */
+
+    /* overflow: hidden; */
+    page-break-inside: auto;
+  }
+}
+
 </style>

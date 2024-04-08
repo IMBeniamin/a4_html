@@ -35,4 +35,12 @@ watch(count, () => emit('edit-count', { title: title.value, count: count.value }
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+@media print {
+  .printable {
+    visibility: visible;
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+}
+</style>
