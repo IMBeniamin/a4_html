@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {ref, watch} from 'vue';
+import {ref} from 'vue';
 import Button from "primevue/button";
 import Checkbox from "primevue/checkbox";
 
@@ -8,11 +8,22 @@ const props = defineProps({
   'count': Number,
   'index': Number
 })
-const emit = defineEmits(["edit-count", "delete-label"]);
+const emit = defineEmits(["edit-label", "delete-label"]);
 const title = ref(props.title)
 const count = ref(props.count)
 const selected = ref(false)
-watch(count, () => emit('edit-count', {title: title.value, count: count.value}))
+
+function createDebounce() {
+  let timeout: NodeJS.Timeout | undefined;
+  return function (fnc: Function, delayMs: number) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      fnc();
+    }, delayMs || 500);
+  };
+}
+const debounce = createDebounce();
+
 </script>
 
 <template>
@@ -34,7 +45,7 @@ watch(count, () => emit('edit-count', {title: title.value, count: count.value}))
                 aria-label="delete"
                 class="invisible hover:bg-slate-50 dark:hover:bg-slate-500 rounded-lg" />
       <Button severity="danger" raised
-              @click="$emit('delete-label', {title: title, count: 0, index: index})"
+              @click="$emit('delete-label', {title: title, count: count, index: index})"
               class="invisible text-2xl group-hover:visible group-active:visible rounded-lg">
         <i class="pi pi-trash" />
       </Button>
@@ -47,8 +58,16 @@ watch(count, () => emit('edit-count', {title: title.value, count: count.value}))
     <div class="printable font-bold text-3xl leading-none
                 flex flex-col align-middle
                 ">
-      <p class="printable text-center">{{ title }}</p>
-      <input class="printable text-center bg-inherit" type="number" required v-model="count"/>
+      <input
+          @input="debounce(() => $emit('edit-label', {title: title, count: count, index: index}), 500)"
+          required v-model="title"
+          class="printable text-center bg-inherit focus:outline-none"
+      />
+      <input
+          @input="debounce(() => $emit('edit-label', {title: title, count: count, index: index}), 500)"
+          required v-model="count" type="number"
+          class="printable text-center bg-inherit focus:outline-none"
+      />
     </div>
   </div>
 </template>
@@ -56,7 +75,11 @@ watch(count, () => emit('edit-count', {title: title.value, count: count.value}))
 <style scoped>
 @tailwind components;
 
-
+.card {
+  border-style: dashed;
+  border-color: rgba(0, 0, 0, 0.3);
+  border-width: 0 2px 2px 0;
+}
 
 input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
