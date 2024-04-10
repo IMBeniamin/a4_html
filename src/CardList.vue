@@ -47,7 +47,12 @@ const bulkUpdateStorage = (newData: { title: string, count: number }[]) => {
     headers: headers
   })
 }
-
+const deleteLabel = (data: { title: string, count: number, index: number }) => {
+  labels.value.splice(data.index, 1)
+  axios.post(`https://api.labeller.imben.co/${import.meta.env.VITE_TENANT}/`, labels.value, {
+    headers: headers
+  })
+}
 </script>
 
 <template>
@@ -55,8 +60,10 @@ const bulkUpdateStorage = (newData: { title: string, count: number }[]) => {
     <template v-for="label in labels">
       <CutoutCard
           @edit-count="updateStorage($event.title, $event.count)"
+          @delete-label="deleteLabel($event)"
           :title="label.title"
           :count="label.count"
+          :index="labels.indexOf(label)"
       />
     </template>
   </div>

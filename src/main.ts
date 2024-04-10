@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 // @ts-ignore
 import Lara from './presets/lara';
 import './style.css'
+import 'primeicons/primeicons.css';
 import App from './App.vue'
 import PrimeVue from 'primevue/config';
 
