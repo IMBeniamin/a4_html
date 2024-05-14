@@ -90,6 +90,8 @@ input[type='number']::-webkit-outer-spin-button {
 @media print {
   * {
     visibility: hidden;
+    border-width: 0;
+    box-shadow: none;
   }
   .printable {
     visibility: visible;

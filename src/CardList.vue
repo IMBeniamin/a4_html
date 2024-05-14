@@ -108,7 +108,7 @@ const addLabel = (data: { title: string, count: number }) => {
     /* height: 297mm; */
 
     /* overflow: hidden; */
-    page-break-inside: auto;
+    break-inside: auto;
   }
 }
 
