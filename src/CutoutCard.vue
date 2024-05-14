@@ -43,10 +43,10 @@ const debounce = createDebounce();
       <Checkbox v-model="selected"
                 binary variant="filled"
                 aria-label="delete"
-                class="invisible hover:bg-slate-50 dark:hover:bg-slate-500 rounded-lg" />
+                class="invisible hover:bg-slate-50 dark:hover:bg-slate-500 rounded-lg print:group-hover:invisible" />
       <Button severity="danger" raised
               @click="$emit('delete-label', {title: title, count: count, index: index})"
-              class="invisible text-2xl group-hover:visible group-active:visible rounded-lg">
+              class="invisible text-2xl group-hover:visible group-active:visible rounded-lg print:group-hover:invisible">
         <i class="pi pi-trash" />
       </Button>
     </div>
@@ -90,15 +90,13 @@ input[type='number']::-webkit-outer-spin-button {
 @media print {
   * {
     visibility: hidden;
-    border-width: 0;
-    box-shadow: none;
   }
   .printable {
     visibility: visible;
   }
   .non-print-breakable {
-    page-break-inside: avoid;
-    page-break-after: auto;
+    break-inside: avoid;
+    break-after: auto;
   }
 }
 </style>

@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       screens: {
-        // 'print': {'raw': 'print'},
+        'print': {'raw': 'print'},
       },
       colors: {
         'primary-50': 'rgb(var(--primary-50))',
